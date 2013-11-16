@@ -1,0 +1,10 @@
+{
+  "name": "example",
+  "version": "13.11.14",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "0.8.4",
+    "express": "3.4.0",
+    "mongodb": "1.*"
+  }
+}

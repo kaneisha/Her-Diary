@@ -1,0 +1,65 @@
+html,body,div,form,fieldset,legend,label,h1,h2,h3,h4,h5,h6,p,ul,dl,dt,dd,figure,figcaption{
+        margin: 0;
+        padding: 0;
+        }
+
+#top{
+	background-color: #3d3d3d;
+	height: 40px;
+}
+#logo{
+	margin-top: 60px;
+	margin-left: 50px;
+}
+
+nav{
+	float: right;
+	margin-right: 120px;
+	margin-top: -50px;*/
+}
+
+nav ul li{
+	display: inline-block;
+	font-family: 'Arial Black', arial;
+	margin-right: 30px;
+
+}
+
+nav a{
+	color: #3d3d3d;
+	font-size: 20px;
+}
+
+#blogname{
+	float: right;
+	margin-top: 80px;
+	margin-right: 80px;
+}
+
+.current{
+	color: #ff0078;
+}
+
+section{
+	background-color: #3d3d3d;
+	width: 560px;
+	height: 200px;
+	font-family: 'Arial Black', arial;
+	color: #00defb;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+
+.view{
+	color: #ff006f;
+	float: right;
+	margin-top:  -35px;
+	margin-right: 35px;
+	text-decoration: underline;
+}
+
+section h4, #text{
+	margin-left: 90px;
+}
