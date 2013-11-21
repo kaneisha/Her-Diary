@@ -1,14 +1,15 @@
 /*
  {
-	 'title': String,
-	 'author': String,
-	 'category': String,
-	 'text': String
+ 'title': String,
+ 'author': String,
+ 'category': String,
+ 'text': String
  }
  */
 
 var mongodb = require('mongodb');
 var mongoClient = mongodb.MongoClient;
+var BSON = mongodb.BSONPure;
 
 var databaseName = 'mongodb://localhost:27017/adbblog';
 var collectionName = 'posts';
@@ -22,7 +23,7 @@ exports.create = function(query, fn) {
 		'text' : query.text
 	};
 
-	mongoClient.connect(documentName, function(err, db) {
+	mongoClient.connect(databaseName, function(err, db) {
 
 		db.collection(collectionName).insert(post, function(err, results) {
 			fn(err, results);
@@ -36,28 +37,31 @@ exports.create = function(query, fn) {
 //-----------------Listing all posts
 exports.readAll = function(fn) {
 
-	mongoClient.connect(documentName, function(err, db) {
+	mongoClient.connect(databaseName, function(err, db) {
 
 		db.collection(collectionName).find().toArray(function(err, results) {
 			fn(err, results);
 			db.close();
 		});
-		
+
 	});
 };
 
 //--------------------Find post info
 exports.readById = function(id, fn) {
 
-	mongoClient.connect(documentName, function(err, db) {
+	mongoClient.connect(databaseName, function(err, db) {
 
 		db.collection(collectionName).findOne({
-			_id : id
+			'_id' : new BSON.ObjectID(id)
 		}, function(err, results) {
+
+			console.log(results);
+
 			fn(err, results);
 			db.close();
 		});
-		
+
 	});
 };
 
@@ -71,10 +75,10 @@ exports.update = function(query, fn) {
 		'text' : query.text
 	};
 
-	mongoClient.connect(documentName, function(err, db) {
+	mongoClient.connect(databaseName, function(err, db) {
 
 		db.collection(collectionName).update({
-			_id : query.id
+			'_id' : new BSON.ObjectID(query.id)
 		}, {
 			$set : update
 		}, function(err, results) {
@@ -89,10 +93,10 @@ exports.update = function(query, fn) {
 //---------------------Delete a Post
 exports.deleteById = function(id, fn) {
 
-	mongoClient.connect(documentName, function(err, db) {
+	mongoClient.connect(databaseName, function(err, db) {
 
 		db.collection('posts').remove({
-			_id : id
+			'_id' : new BSON.ObjectID(id)
 		}, function(err, results) {
 			fn(err, results);
 			db.close();

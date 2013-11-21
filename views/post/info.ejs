@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-                <title>Her Diary</title>
-                <meta charset="utf-8" />
-                 <link rel="stylesheet" href="/css/main.css">
-        </head>
-        <body>
-        	<header>
-                <div id="top"></div>
-                <img src="/images/logo.png" id="logo" />
-                <img src="/images/blogname.png" id="blogname"/>            
-            </header>
-                <nav>
-                    <ul>
-                    	<li><a class="current" href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Search</a></li>
-                        <li><a href="#">RSS</a></li>
-                    </ul>
-                </nav>
+	<head>
+		<title>Her Diary</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="/css/main.css">
+	</head>
+	<body>
+		<header>
+			<div id="top"></div>
+			<img src="/images/logo.png" id="logo" />
+			<img src="/images/blogname.png" id="blogname"/>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a class="current" href="#">Home</a>
+				</li>
+				<li>
+					<a href="#">About</a>
+				</li>
+				<li>
+					<a href="#">Search</a>
+				</li>
+				<li>
+					<a href="#">RSS</a>
+				</li>
+			</ul>
+		</nav>
 
-                <section class="post">
-                    <div id="date">
-                        <p class="day">11</p>
-                        <p class="month">Nov</p>
-                    </div>
+		<section class="post">
+			<div id="date">
+				<p class="day">
+					11
+				</p>
+				<p class="month">
+					Nov
+				</p>
+			</div>
 
-                    <h4><%= title %></h4>
-                    
-                    <h4><%= author %></h4>
-               
-                    <h4><%= category %></h4>
-                
-                    <p id="text"><%= text %></p>
-                </section>
+			<h4><%= title %></h4>
 
-        </body>
+			<h4><%= author %></h4>
+
+			<h4><%= category %></h4>
+
+			<p id="text">
+				<%= text %>
+			</p>
+		</section>
+
+	</body>
 </html>

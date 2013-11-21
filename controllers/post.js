@@ -15,9 +15,9 @@ module.exports.controller = function(app) {
 
 		var postId = req.query.id;
 
-		var postModel = require('../models/postmodel');
+		var postModel = require('../models/postModel');
 
-		postModel.readById(postId, function(results) {
+		postModel.readById(postId, function(err, results) {
 			var data = results;
 			res.render('post/info', data);
 		});
@@ -28,13 +28,13 @@ module.exports.controller = function(app) {
 
 		var postId = req.query.id;
 
-		var postModel = require('../models/postmodel');
+		var postModel = require('../models/postModel');
 
-		postModel.readById(postId, function(results) {
+		postModel.readById(postId, function(err, results) {
 			var data = results;
 			res.render('post/update', data);
 		});
-		
+
 	});
 
 };
