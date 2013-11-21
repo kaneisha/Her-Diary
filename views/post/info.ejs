@@ -20,34 +20,20 @@
                     </ul>
                 </nav>
 
-                <a href="/post/create" class="add">Add Post</a>
-
-
-                <% for(var i = 0; i < posts.length; i++){ %>
-                
-
-
                 <section class="post">
                     <div id="date">
                         <p class="day">11</p>
                         <p class="month">Nov</p>
-                        <img src="/images/date.png" id="circle"/>
                     </div>
-                    <a href="/post/info?id=<%= posts[i]._id %>" class="view" data-postid="<%= posts[i]._id %>">View Post</a>
-                    <a href="/post/update?id=<%= posts[i]._id %>" class="edit" data-postid="<%= posts[i]._id %>">Edit Post</a>
-                    <a href="/post/delete?id=<%= posts[i]._id %>" class="edit" data-postid="<%= posts[i]._id %>">Delete Post</a>
 
-
-                    <h4><%= posts[i].title %></h4>
+                    <h4><%= title %></h4>
                     
-                    <h4><%= posts[i].author %></h4>
+                    <h4><%= author %></h4>
                
-                    <h4><%= posts[i].category %></h4>
+                    <h4><%= category %></h4>
                 
-                    <p id="text"><%= posts[i].text %></p>
+                    <p id="text"><%= text %></p>
                 </section>
-
-                <% }; %>
 
         </body>
 </html>

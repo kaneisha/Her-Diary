@@ -5,7 +5,7 @@ var appTemplate;
 
 var loadLanding = function() {
         $('#wrap').empty();
-        $.get('templates/template.html', function(htmlArg) {
+        $.get('views/post/add.ejs', function(htmlArg) {
 
                 landingTemplate = htmlArg;
 

@@ -40,6 +40,15 @@ nav a{
 	color: #ff0078;
 }
 
+.add{
+	color: #ff006f;
+	float: right;
+	margin-right: 280px;
+	margin-top: 20px;
+	text-decoration: underline;
+	font-family: 'Arial Black', arial;
+}
+
 section{
 	background-color: #3d3d3d;
 	width: 560px;
@@ -60,6 +69,25 @@ section{
 	text-decoration: underline;
 }
 
+.edit{
+	color: #ff006f;
+	float: right;
+	margin-top:  -10px;
+	margin-right: 35px;
+	text-decoration: underline;
+}
+
 section h4, #text{
 	margin-left: 90px;
+}
+
+#date{
+	/*background: url(/images/date.png) no-repeat;*/
+	width: 60px;
+	height: 60px;
+}
+
+#circle{
+	margin-top: -40px;
+	margin-left: -60px;
 }
