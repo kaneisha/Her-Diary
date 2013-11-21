@@ -86,66 +86,66 @@
 // 	});
 // };
 
-
-
+/*
+ {
+	 'title': String,
+	 'author': String,
+	 'category': String,
+	 'text': String
+ }
+ */
 
 var mongodb = require('mongodb');
 var mongoClient = mongodb.MongoClient;
 var format = require('util').format;
 
-//------------------Adding a post
-exports.create = function(query, fn) { //(doc, fn)
+exports.create = function(query, fn) {
 
-    var add = {
-        'id': query.id,
-        'title': query.title,
-        'author': query.author,
-        'category': query.category,
-        'text': query.text
-    };
+	var post = {
+		'title' : query.title,
+		'author' : query.author,
+		'category' : query.category,
+		'text' : query.text
+	};
 
-    var BSON = require('mongodb').BSONPure;
-    var obj_id = BSON.ObjectID.createFromHexString(add.id);
+	mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db) {
 
-        mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db) {
-
-    //              db.collection('posts').save({_id : obj_id}, function(err, results) { 
-    //                     fn(err, results);
-    //                     db.close();
-    //             });
-
-                db.collection('posts').insert(query, function(err, results) { //doc, 
-                        fn(err, results);
-                        db.close();
-                });
-        });
+		db.collection('posts').insert(post, function(err, results) {
+			fn(err, results);
+			db.close();
+		});
+		
+	});
+	
 };
 
 //-----------------Listing all posts
 exports.readAll = function(fn) {
 
-        mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db) {
+	mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db) {
 
-                db.collection('posts').find().toArray(function(err, results) {
+		db.collection('posts').find().toArray(function(err, results) {
 
-                        fn(results);
-                });
-        });
+			fn(results);
+		});
+	});
 };
 
 //--------------------Find post info
 exports.readById = function(id, fn) {
 
-	 // var BSON = require('mongodb').BSONPure;
-	 // var obj_id = BSON.ObjectID.createFromHexString(info.id);
+	// var BSON = require('mongodb').BSONPure;
+	// var obj_id = BSON.ObjectID.createFromHexString(info.id);
 
-        mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db) {
+	mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db) {
 
-                db.collection('posts').findOne({_id : id}, function(err, results) {
-                        fn(results);
-                      
-                });
-        });
+		db.collection('posts').findOne({
+			_id : id
+		}, function(err, results) {
+			fn(results);
+
+		});
+	});
 };
 
 //---------------------Update a Post
@@ -153,33 +153,36 @@ exports.update = function(query, fn) {
 
 	var update = {
 		'title': query.title,
-		'author': query.author,
-		'text': query.text
+		 'author': query.author,
+		 'category': query.category,
+		 'text': query.text
 	};
 
-    mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db) {
+	mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db) {
 
-            db.collection('posts').update({_id : query.id}, {$set: update}, function(err, results) {
-                    fn(results);
-            });
-    });
+		db.collection('posts').update({
+			_id : query.id
+		}, {
+			$set : update
+		}, function(err, results) {
+			fn(results);
+		});
+	});
 
 };
 
 //---------------------Delete a Post
-exports.delete_post = function(query, fn){
+exports.delete_post = function(query, fn) {
 
-    mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db){
+	mongoClient.connect('mongodb://localhost:27017/adbblog', function(err, db) {
 
-            db.collection('posts').remove({_id : query.id}, function(err, results){
-                    fn(results);
-            })
-    })
-}
-
-
-
-
-
-
+		db.collection('posts').remove({
+			_id : query.id
+		}, function(err, results) {
+			fn(results);
+		});
+	
+	});
+	
+};
 
