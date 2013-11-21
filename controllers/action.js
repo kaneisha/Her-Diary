@@ -12,7 +12,7 @@ module.exports.controller = function(app) {
 		};
 
 		postModel.create(post, function(err, results) {
-			res.redirect('/post/add');
+			res.redirect('/');
 		});
 
 	});
@@ -28,12 +28,8 @@ module.exports.controller = function(app) {
 			'text' : req.body.text
 		};
 
-		console.log(post);
-
 		postModel.update(post, function(results) {
-			var data = results;
-			console.log('results are ' + results);
-			res.redirect('/post/add');
+			res.redirect('/');
 		});
 
 	});

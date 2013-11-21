@@ -10,7 +10,7 @@ module.exports.controller = function(app) {
 			var data = {};
 			data.posts = response;
 			
-			res.render('post/add', data);
+			res.render('main/index', data);
 			
 		});
 
